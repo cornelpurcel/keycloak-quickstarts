@@ -22,6 +22,8 @@ import org.keycloak.authentication.RequiredActionContext;
 import org.keycloak.authentication.RequiredActionProvider;
 import org.keycloak.credential.CredentialProvider;
 import org.keycloak.examples.authenticator.credential.SecretQuestionCredentialModel;
+import org.keycloak.models.KeycloakSession;
+import org.keycloak.sessions.AuthenticationSessionModel;
 
 import jakarta.ws.rs.core.Response;
 
@@ -35,6 +37,11 @@ public class SecretQuestionRequiredAction implements RequiredActionProvider, Cre
     @Override
     public void evaluateTriggers(RequiredActionContext context) {
 
+    }
+
+    @Override
+    public String getCredentialType(KeycloakSession session, AuthenticationSessionModel AuthenticationSession) {
+        return SecretQuestionCredentialModel.TYPE;
     }
 
     @Override
